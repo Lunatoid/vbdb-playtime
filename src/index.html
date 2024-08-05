@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="output.css" rel="stylesheet">
+        <script src="main.js"></script>
+    </head>
+    <body class="min-h-screen">
+        <div class="container mx-auto">
+            <h1 class="text-center text-5xl font-medium p-5">vndb playtime</h1>
+            <div class="flex flex-col justify-center items-center pt-2">
+                <form id="vndb-form" onsubmit="return vndbSearch(event)" class="mx-auto justify-center">
+                    <input type="text" id="username-input" name="vndb-username" class="form-input rounded-lg me-2 mb-2" placeholder="vndb username">
+
+                    <div class="relative inline-block">
+                        <button id="filter-dropdown" type="button" onclick="return openDropdown('filter-dropdown-div')" class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2">Filters</button>
+
+                        <div id="filter-dropdown-div" class="hidden z-10 divide-y bg-white shadow border border-gray-300 w-48 rounded-lg absolute left-0">
+                            <ul class="p-3 space-y-3 text-sm" aria-labelledby="filter-dropdown">
+                                <li>
+                                    <div class="flex items-center">
+                                        <input id="checkbox-playing" name="filter-playing" type="checkbox" value="1" class="w-4 h-4 rounded-sm">
+                                        <label for="checkbox-playing" class="ms-2 text-sm font-medium">Playing</label>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="flex items-center">
+                                        <input id="checkbox-finished" name="filter-finished" type="checkbox" checked value="2" class="w-4 h-4 rounded-sm">
+                                        <label for="checkbox-finished" class="ms-2 text-sm font-medium">Finished</label>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="flex items-center">
+                                        <input id="checkbox-stalled" name="filter-stalled" type="checkbox" value="3" class="w-4 h-4 rounded-sm">
+                                        <label for="checkbox-stalled" class="ms-2 text-sm font-medium">Stalled</label>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="flex items-center">
+                                        <input id="checkbox-dropped" nmae="filter-dropped" type="checkbox" value="4" class="w-4 h-4 rounded-sm">
+                                        <label for="checkbox-dropped" class="ms-2 text-sm font-medium">Dropped</label>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="flex items-center">
+                                        <input id="checkbox-wishlist" name="filter-wishlist" type="checkbox" value="5" class="w-4 h-4 rounded-sm">
+                                        <label for="checkbox-wishlist" class="ms-2 text-sm font-medium">Wishlist</label>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="flex items-center">
+                                        <input id="checkbox-blacklist" name="filter-blacklist" type="checkbox" value="6" class="w-4 h-4 rounded-sm">
+                                        <label for="checkbox-blacklist" class="ms-2 text-sm font-medium">Blacklist</label>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="flex items-center">
+                                        <input id="checkbox-voted" name="filter-voted" type="checkbox" value="7" class="w-4 h-4 rounded-sm">
+                                        <label for="checkbox-voted" class="ms-2 text-sm font-medium">Voted</label>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800" >Submit</button>
+                </form>
+            </div>
+            <div id="vndb-games" class="container h-[60vh] w-5/12 grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 overflow-scroll mx-auto">
+            </div>
+            <div class="justify-center">
+                <div class="mx-auto w-full text-center pt-16">
+                    <h1 class="text-2xl mr-2 inline-block">You have played for approximately: </h1>
+                    <h1 id="text-playtime" class="font-bold text-2xl inline-block">0h 0m</h1>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
